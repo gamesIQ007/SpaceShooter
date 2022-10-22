@@ -12,15 +12,13 @@ namespace SpaceShooter
         /// <summary>
         /// Объект игнорирует повреждения.
         /// </summary>
-        [SerializeField]
-        private bool m_Indestructible;
+        [SerializeField] private bool m_Indestructible;
         public bool IsIndestructible => m_Indestructible;
 
         /// <summary>
         /// Стартовое количество хитпоинтов.
         /// </summary>
-        [SerializeField]
-        private int m_HitPoints;
+        [SerializeField] private int m_HitPoints;
 
         /// <summary>
         /// Текущее количество хитпоинтов.
