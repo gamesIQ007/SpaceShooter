@@ -4,11 +4,14 @@ namespace SpaceShooter
 {
     [RequireComponent(typeof(Rigidbody2D))]
 
+    /// <summary>
+    ///  ласс космического корабл€
+    /// </summary>
     public class SpaceShip : Destructible
     {
         [Header("Space ship")]
         /// <summary>
-        /// ћасса, дл€ автоматической установки в ригида
+        /// ћасса, дл€ автоматической установки в ригиде
         /// </summary>
         [SerializeField] private float m_Mass;
 
@@ -45,29 +48,6 @@ namespace SpaceShooter
             m_Rigid = GetComponent<Rigidbody2D>();
             m_Rigid.mass = m_Mass;
             m_Rigid.inertia = 1; // иннерциальные силы, чтобы было проще балансировать соотношение сил и легче управл€ть
-        }
-
-        private void Update()
-        {
-            ThrustControl = 0;
-            TorqueControl = 0;
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                ThrustControl = 1.0f;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                ThrustControl = -1.0f;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                TorqueControl = 1.0f;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                TorqueControl = -1.0f;
-            }
         }
 
         private void FixedUpdate()

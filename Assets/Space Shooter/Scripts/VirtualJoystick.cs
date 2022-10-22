@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace SpaceShooter
 {
+    /// <summary>
+    /// Класс виртуального джойстика
+    /// </summary>
     public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
     {
         /// <summary>
@@ -21,6 +24,10 @@ namespace SpaceShooter
         /// </summary>
         public Vector3 Value { get; private set; }
 
+        /// <summary>
+        /// Реализация интерфейса IDragHandler. Обработка касания экрана
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnDrag(PointerEventData eventData)
         {
             Vector2 position = Vector2.zero;
@@ -51,11 +58,19 @@ namespace SpaceShooter
             m_Joystick.rectTransform.anchoredPosition = new Vector2(Value.x * offsetX, Value.y * offsetY);
         }
 
+        /// <summary>
+        /// Реализация интерфейса IPointerDownHandler. Обработка касания экрана
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
             OnDrag(eventData);
         }
 
+        /// <summary>
+        /// Реализация интерфейса IPointerUpHandler. Обработка нереставания касания экрана
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerUp(PointerEventData eventData)
         {
             Value = Vector3.zero;
