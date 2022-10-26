@@ -39,7 +39,7 @@ namespace SpaceShooter
 
         #region Unity Events
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (m_Camera == null || m_Target == null) return;
 
