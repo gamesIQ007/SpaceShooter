@@ -57,5 +57,18 @@ namespace SpaceShooter
         }
 
         #endregion
+
+        #region Public API
+
+        /// <summary>
+        /// Ќазначение новой цели отслеживани€ камерой
+        /// </summary>
+        /// <param name="newTarget"></param>
+        public void SetTarget(Transform newTarget)
+        {
+            m_Target = newTarget;
+        }
+
+        #endregion
     }
 }

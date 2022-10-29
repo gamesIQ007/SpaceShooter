@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 1570412272}
   - component: {fileID: 1570412271}
   - component: {fileID: 1570412273}
+  - component: {fileID: 1570412274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -781,6 +782,24 @@ MonoBehaviour:
   m_InterpolationAngular: 5
   m_CameraZOffset: -10
   m_ForwardOffset: 1
+--- !u!114 &1570412274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570412270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab369696afd0d243a6ba5ce38d43a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NumLives: 3
+  m_Ship: {fileID: 1631949877}
+  m_PlayerShipPrefab: {fileID: 1780313557845495585, guid: 5eef0ed7e1404cd45961cdc0635f2f25,
+    type: 3}
+  m_CameraController: {fileID: 1570412273}
+  m_MovementController: {fileID: 1570412271}
 --- !u!114 &1631949877 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1780313557845495591, guid: 5eef0ed7e1404cd45961cdc0635f2f25,

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpaceShooter
 {
@@ -25,6 +26,12 @@ namespace SpaceShooter
         /// </summary>
         private int m_CurrentHitPoints;
         public int HitPoints => m_CurrentHitPoints;
+
+        /// <summary>
+        /// Ивент, происхдящий со смертью
+        /// </summary>
+        [SerializeField] private UnityEvent m_EventOnDeath;
+        public UnityEvent EventOnDeath => m_EventOnDeath;
 
         #endregion
 
@@ -62,6 +69,7 @@ namespace SpaceShooter
         protected virtual void OnDeath()
         {
             Destroy(gameObject);
+            m_EventOnDeath?.Invoke();
         }
     }
 }

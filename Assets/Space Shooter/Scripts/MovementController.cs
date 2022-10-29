@@ -20,6 +20,7 @@ namespace SpaceShooter
         /// —сылка на управл€емый корабль
         /// </summary>
         [SerializeField] private SpaceShip m_TargetShip;
+        public void SetTargetShip(SpaceShip ship) => m_TargetShip = ship;   // при вызове SetTargetShip присваиваем ссылке на управл€емый корабль передаваемый корабль
 
         /// <summary>
         /// —сылка на виртуальный джойстик
