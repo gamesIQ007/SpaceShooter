@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 1
-  m_Radius: 6.97
+  m_Radius: 11.49
   m_LimitMode: 0
 --- !u!4 &874004037
 Transform:
@@ -846,6 +846,9 @@ MonoBehaviour:
     type: 3}
   m_CameraController: {fileID: 1570412273}
   m_MovementController: {fileID: 1570412271}
+  m_EffectPrefab: {fileID: 3760484212831688210, guid: 3c32b93b7a8e2f84d9fa6fc03fcc155b,
+    type: 3}
+  m_EffectDuration: 2
 --- !u!114 &1631949877 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1780313557845495591, guid: 5eef0ed7e1404cd45961cdc0635f2f25,
