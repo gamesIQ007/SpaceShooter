@@ -6,19 +6,19 @@ namespace SpaceShooter
     /// <summary>
     /// Точка назначения. Выдаёт событие при достижении её игроком.
     /// </summary>
-    public class DestinationArea : MonoBehaviour
+    public class Trigger : MonoBehaviour
     {
         /// <summary>
         /// Событие при достижении точки
         /// </summary>
-        [SerializeField] private UnityEvent m_TargetReached;
-        public UnityEvent TargetReached => m_TargetReached;
+        [SerializeField] private UnityEvent m_Enter;
+        public UnityEvent Enter => m_Enter;
 
         #region Unity Events
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            m_TargetReached.Invoke();
+            m_Enter.Invoke();
         }
 
         #endregion
