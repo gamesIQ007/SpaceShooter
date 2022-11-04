@@ -32,6 +32,16 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private ControlMode m_ControlMode;
 
+        /// <summary>
+        ///  нопка выстрела из основного оружи€
+        /// </summary>
+        [SerializeField] private PointerClickHold m_MobileFirePrimary;
+
+        /// <summary>
+        ///  нопка выстрела из дополнительного оружи€
+        /// </summary>
+        [SerializeField] private PointerClickHold m_MobileFireSecondary;
+
         #region Unity Events
 
         private void Start()
@@ -39,10 +49,14 @@ namespace SpaceShooter
             if (m_ControlMode == ControlMode.Keyboard)
             {
                 m_MobileJoystick.gameObject.SetActive(false);
+                m_MobileFirePrimary.gameObject.SetActive(false);
+                m_MobileFireSecondary.gameObject.SetActive(false);
             }
             else
             {
                 m_MobileJoystick.gameObject.SetActive(true);
+                m_MobileFirePrimary.gameObject.SetActive(true);
+                m_MobileFireSecondary.gameObject.SetActive(true);
             }
         }
 
@@ -68,6 +82,16 @@ namespace SpaceShooter
         private void ControlMobile()
         {
             Vector3 dir = m_MobileJoystick.Value;
+
+            if (m_MobileFirePrimary.IsHold)
+            {
+                m_TargetShip.Fire(TurretMode.Primary);
+            }
+
+            if (m_MobileFireSecondary.IsHold)
+            {
+                m_TargetShip.Fire(TurretMode.Secondary);
+            }
 
             m_TargetShip.ThrustControl = dir.y;
             m_TargetShip.TorqueControl = -dir.x;
@@ -96,6 +120,16 @@ namespace SpaceShooter
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 torque = -1.0f;
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                m_TargetShip.Fire(TurretMode.Primary);
+            }
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                m_TargetShip.Fire(TurretMode.Secondary);
             }
 
             m_TargetShip.ThrustControl = thrust;

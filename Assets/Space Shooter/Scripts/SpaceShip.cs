@@ -40,6 +40,11 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private Rigidbody2D m_Rigid;
 
+        /// <summary>
+        /// Турели
+        /// </summary>
+        [SerializeField] private Turret[] m_Turrets;
+
         #region Unity Events
 
         protected override void Start()
@@ -68,6 +73,21 @@ namespace SpaceShooter
         /// Управление вращательной тягой. От -1.0 до +1.0
         /// </summary>
         public float TorqueControl { get; set; }
+
+        /// <summary>
+        /// Стрельба
+        /// </summary>
+        /// <param name="mode">Стрельба из турелей с режимом mode</param>
+        public void Fire(TurretMode mode)
+        {
+            for (int i = 0; i < m_Turrets.Length; i++)
+            {
+                if (m_Turrets[i].Mode == mode)
+                {
+                    m_Turrets[i].Fire();
+                }
+            }
+        }
 
         #endregion
 
