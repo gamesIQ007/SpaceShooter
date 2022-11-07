@@ -64,8 +64,7 @@ namespace SpaceShooter
             Projectile projectile = Instantiate(m_TurretProperties.ProjectilePrefab);
             projectile.transform.position = transform.position;
             projectile.transform.up = transform.up;
-
-            // בכאסעונמל ןûש-ןûש
+            projectile.SetParentShooter(m_Ship);
 
             m_RefireTimer = m_TurretProperties.RateOfFire;
 
