@@ -45,6 +45,31 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private Turret[] m_Turrets;
 
+        /// <summary>
+        /// Максимальное количество энергии
+        /// </summary>
+        [SerializeField] private int m_MaxEnergy;
+
+        /// <summary>
+        /// Максимальное количество боеприпасов
+        /// </summary>
+        [SerializeField] private int m_MaxAmmo;
+
+        /// <summary>
+        /// Регенерация энергии в секунду
+        /// </summary>
+        [SerializeField] private int m_EnergyRegenPerSecond;
+
+        /// <summary>
+        /// Текущее количество энергии
+        /// </summary>
+        private float m_PrimaryEnergy;
+
+        /// <summary>
+        /// Текущее количество патронов
+        /// </summary>
+        private int m_SecondaryAmmo;
+
         #region Unity Events
 
         protected override void Start()
@@ -53,11 +78,15 @@ namespace SpaceShooter
             m_Rigid = GetComponent<Rigidbody2D>();
             m_Rigid.mass = m_Mass;
             m_Rigid.inertia = 1; // иннерциальные силы, чтобы было проще балансировать соотношение сил и легче управлять
+
+            InitArmament();
         }
 
         private void FixedUpdate()
         {
             UpdateRigitBody();
+
+            UpdateEnergyRegen();
         }
 
         #endregion
@@ -89,6 +118,66 @@ namespace SpaceShooter
             }
         }
 
+        /// <summary>
+        /// Добавить энергию
+        /// </summary>
+        /// <param name="energy">Количество добавляемой энергии</param>
+        public void AddEnergy(int energy)
+        {
+            m_PrimaryEnergy = Mathf.Clamp(m_PrimaryEnergy + energy, 0, m_MaxEnergy);
+        }
+
+        /// <summary>
+        /// Добавить патронов
+        /// </summary>
+        /// <param name="energy">Количество добавляемых патронов</param>
+        public void AddAmmo(int ammo)
+        {
+            m_SecondaryAmmo = Mathf.Clamp(m_SecondaryAmmo + ammo, 0, m_MaxAmmo);
+        }
+
+        /// <summary>
+        /// Возможно ли отнять энергию
+        /// </summary>
+        /// <param name="count">Количество отнимаемой энергии</param>
+        /// <returns>Удачное ли изъяние энергии</returns>
+        public bool DrawEnergy(int count)
+        {
+            if (count == 0)
+            {
+                return true;
+            }
+
+            if (m_PrimaryEnergy >= count)
+            {
+                m_PrimaryEnergy -= count;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Возможно ли отнять патроны
+        /// </summary>
+        /// <param name="count">Количество отнимаемых патронов</param>
+        /// <returns>Удачное ли изъяние патронов</returns>
+        public bool DrawAmmo(int count)
+        {
+            if (count == 0)
+            {
+                return true;
+            }
+
+            if (m_SecondaryAmmo >= count)
+            {
+                m_SecondaryAmmo -= count;
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         /// <summary>
@@ -101,6 +190,24 @@ namespace SpaceShooter
 
             m_Rigid.AddTorque(TorqueControl * m_Mobility * Time.fixedDeltaTime, ForceMode2D.Force);
             m_Rigid.AddTorque(-m_Rigid.angularVelocity * (m_Mobility / m_MaxAngularVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
+        }
+
+        /// <summary>
+        /// Инициализация вооружения
+        /// </summary>
+        private void InitArmament()
+        {
+            m_PrimaryEnergy = m_MaxEnergy;
+            m_SecondaryAmmo = m_MaxAmmo;
+        }
+
+        /// <summary>
+        /// Регенерация энергии
+        /// </summary>
+        private void UpdateEnergyRegen()
+        {
+            m_PrimaryEnergy += (float)m_EnergyRegenPerSecond * Time.fixedDeltaTime;
+            m_PrimaryEnergy = Mathf.Clamp(m_PrimaryEnergy, 0, m_MaxEnergy);
         }
     }
 }
