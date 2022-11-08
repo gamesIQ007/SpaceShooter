@@ -7,7 +7,7 @@ namespace SpaceShooter
     /// Класс игрока
     /// </summary>
 
-    public class Player : MonoBehaviour
+    public class Player : SingletonBase<Player>
     {
         /// <summary>
         /// Количество жизней
@@ -18,6 +18,7 @@ namespace SpaceShooter
         /// Корабль игрока
         /// </summary>
         [SerializeField] private SpaceShip m_Ship;
+        public SpaceShip ActiveShip => m_Ship;
 
         /// <summary>
         /// Префаб корабля игрока

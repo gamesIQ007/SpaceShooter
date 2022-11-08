@@ -498,6 +498,9 @@ MonoBehaviour:
   - {fileID: 1746121156}
   - {fileID: 233078540}
   - {fileID: 1005676765}
+  m_MaxEnergy: 20
+  m_MaxAmmo: 10
+  m_EnergyRegenPerSecond: 1
 --- !u!114 &853431056
 MonoBehaviour:
   m_ObjectHideFlags: 0

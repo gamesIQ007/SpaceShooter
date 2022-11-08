@@ -178,6 +178,18 @@ namespace SpaceShooter
             return false;
         }
 
+        /// <summary>
+        /// Назначить свойства турели
+        /// </summary>
+        /// <param name="prop">Назначаемое свойство турели</param>
+        public void AssignWeapon(TurretProperties props)
+        {
+            for (int i = 0; i < m_Turrets.Length; i++)
+            {
+                m_Turrets[i].AssignLoadout(props);
+            }
+        }
+
         #endregion
 
         /// <summary>
