@@ -13,7 +13,8 @@ namespace SpaceShooter
         public enum EffectType
         {
             AddAmmo,
-            AddEnergy
+            AddEnergy,
+            AddTemporaryIndestructible
         }
 
         /// <summary>
@@ -40,6 +41,10 @@ namespace SpaceShooter
             if (m_EffectType == EffectType.AddAmmo)
             {
                 ship.AddAmmo((int)m_Value);
+            }
+            if (m_EffectType == EffectType.AddTemporaryIndestructible)
+            {
+                ship.ApplyTemporaryIndestructible((int)m_Value);
             }
         }
     }

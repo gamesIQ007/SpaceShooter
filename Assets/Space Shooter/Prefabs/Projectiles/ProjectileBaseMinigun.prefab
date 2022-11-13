@@ -80,8 +80,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.019550323
-        value: 0.40880802
+        time: 0.013965607
+        value: 0.19497135
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -89,8 +89,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.06704011
-        value: 0.27673158
+        time: 0.05865922
+        value: 0.100629896
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -111,8 +111,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.8862745, g: 0.0862745, b: 0.16681497, a: 0.78431374}
-      key1: {r: 0.8862745, g: 0.77884513, b: 0.0862745, a: 0.78431374}
+      key0: {r: 0.8852603, g: 0.8862745, b: 0.0862745, a: 0.78431374}
+      key1: {r: 0.8862746, g: 0.8862746, b: 0.08627451, a: 0.78431374}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3587922760705586003}
   - component: {fileID: 8286171676632812614}
   m_Layer: 0
-  m_Name: ProjectileRocket
+  m_Name: ProjectileBaseMinigun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,9 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
-  m_Velocity: 10
-  m_LifeTime: 60
-  m_Damage: 50
-  m_ImpactEffectPrefab: {fileID: 598621503010737790, guid: 84036f083af62c94aa4b19445348549b,
+  m_Velocity: 15
+  m_LifeTime: 10
+  m_Damage: 5
+  m_ImpactEffectPrefab: {fileID: 2211537760785672664, guid: d43e455b9b771b04aa3c0aec713642b5,
     type: 3}
-  m_IsHoming: 0

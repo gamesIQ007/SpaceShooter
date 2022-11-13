@@ -21,6 +21,16 @@ namespace SpaceShooter
         [SerializeField] private float m_Thrust;
 
         /// <summary>
+        /// Модификатор толкающей силы
+        /// </summary>
+        private float m_ThrustModifier;
+
+        /// <summary>
+        /// Время действия модификатора толкающей силы
+        /// </summary>
+        private float m_ThrustModifierTimer;
+
+        /// <summary>
         /// Вращающая сила
         /// </summary>
         [SerializeField] private float m_Mobility;
@@ -80,6 +90,22 @@ namespace SpaceShooter
             m_Rigid.inertia = 1; // иннерциальные силы, чтобы было проще балансировать соотношение сил и легче управлять
 
             InitArmament();
+
+            m_ThrustModifier = 1;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (m_ThrustModifierTimer <= 0) return;
+
+            m_ThrustModifierTimer -= Time.deltaTime;
+
+            if (m_ThrustModifierTimer <= 0)
+            {
+                DisableTemporarySpeedUp();
+            }
         }
 
         private void FixedUpdate()
@@ -190,6 +216,17 @@ namespace SpaceShooter
             }
         }
 
+        /// <summary>
+        /// Включение временного модификатора толкающей силы
+        /// </summary>
+        /// <param name="value">Величина модификатора толкающей силы</param>
+        /// <param name="time">Время действия модификатора толкающей силы</param>
+        public void EnableTemporarySpeedUp(float value, float time)
+        {
+            m_ThrustModifier = value;
+            m_ThrustModifierTimer += time;
+        }
+
         #endregion
 
         /// <summary>
@@ -197,8 +234,8 @@ namespace SpaceShooter
         /// </summary>
         private void UpdateRigitBody()
         {
-            m_Rigid.AddForce(ThrustControl * m_Thrust * transform.up * Time.fixedDeltaTime, ForceMode2D.Force);
-            m_Rigid.AddForce(-m_Rigid.velocity * (m_Thrust / m_MaxLinearVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
+            m_Rigid.AddForce(ThrustControl * m_Thrust * m_ThrustModifier * transform.up * Time.fixedDeltaTime, ForceMode2D.Force);
+            m_Rigid.AddForce(-m_Rigid.velocity * (m_Thrust * m_ThrustModifier / m_MaxLinearVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
 
             m_Rigid.AddTorque(TorqueControl * m_Mobility * Time.fixedDeltaTime, ForceMode2D.Force);
             m_Rigid.AddTorque(-m_Rigid.angularVelocity * (m_Mobility / m_MaxAngularVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
@@ -220,6 +257,15 @@ namespace SpaceShooter
         {
             m_PrimaryEnergy += (float)m_EnergyRegenPerSecond * Time.fixedDeltaTime;
             m_PrimaryEnergy = Mathf.Clamp(m_PrimaryEnergy, 0, m_MaxEnergy);
+        }
+
+        /// <summary>
+        /// Отключение временного модификатора толкающей силы
+        /// </summary>
+        private void DisableTemporarySpeedUp()
+        {
+            m_ThrustModifier = 1;
+            m_ThrustModifierTimer = 0;
         }
     }
 }

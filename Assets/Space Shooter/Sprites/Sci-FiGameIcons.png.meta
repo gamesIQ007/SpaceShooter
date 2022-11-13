@@ -1,0 +1,696 @@
+fileFormatVersion: 2
+guid: cea7c2a12d965cb44a0434c04b560c89
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -640530714270629890
+    second: Sci-Fi Game Icons_0
+  - first:
+      213: -7895236975749185187
+    second: Sci-Fi Game Icons_1
+  - first:
+      213: -3630729425249077505
+    second: Sci-Fi Game Icons_2
+  - first:
+      213: -5261360987276172517
+    second: Sci-Fi Game Icons_3
+  - first:
+      213: 3777911919009151594
+    second: Sci-Fi Game Icons_4
+  - first:
+      213: -8954938871450541785
+    second: Sci-Fi Game Icons_5
+  - first:
+      213: 6817009536839411247
+    second: Sci-Fi Game Icons_6
+  - first:
+      213: 3378636366816548122
+    second: Sci-Fi Game Icons_7
+  - first:
+      213: -5925822491755913933
+    second: Sci-Fi Game Icons_8
+  - first:
+      213: -4503898929528837297
+    second: Sci-Fi Game Icons_9
+  - first:
+      213: 117400183130028311
+    second: Sci-Fi Game Icons_10
+  - first:
+      213: 972211636816108181
+    second: Sci-Fi Game Icons_11
+  - first:
+      213: -8086440275676347835
+    second: Sci-Fi Game Icons_12
+  - first:
+      213: 8066576476867031433
+    second: Sci-Fi Game Icons_13
+  - first:
+      213: -1057515986319713083
+    second: Sci-Fi Game Icons_14
+  - first:
+      213: 8346684323273717194
+    second: Sci-Fi Game Icons_15
+  - first:
+      213: -1802342837792659365
+    second: Sci-Fi Game Icons_16
+  - first:
+      213: -2263335211679414248
+    second: Sci-Fi Game Icons_17
+  - first:
+      213: -8800786365344878348
+    second: Sci-Fi Game Icons_18
+  - first:
+      213: 356137310229276228
+    second: Sci-Fi Game Icons_19
+  - first:
+      213: -2360430362720482776
+    second: Sci-Fi Game Icons_20
+  - first:
+      213: 7624633403132260311
+    second: Sci-Fi Game Icons_21
+  - first:
+      213: -1750456248058618037
+    second: Sci-Fi Game Icons_22
+  - first:
+      213: 6678948157803807388
+    second: Sci-Fi Game Icons_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 822
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efffb2485b06c17f0800000000000000
+      internalID: -640530714270629890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_1
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 822
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51c0f22dcb7e6290800000000000000
+      internalID: -7895236975749185187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_2
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 822
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6787cf2de0d9dc0800000000000000
+      internalID: -3630729425249077505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_3
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 822
+        width: 209
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b132e46de04ebf6b0800000000000000
+      internalID: -5261360987276172517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_4
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 822
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a3145cfd6dd6430800000000000000
+      internalID: 3777911919009151594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_5
+      rect:
+        serializedVersion: 2
+        x: 1630
+        y: 822
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7216addaa8aa9b380800000000000000
+      internalID: -8954938871450541785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 554
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2663c14e02ea9e50800000000000000
+      internalID: 6817009536839411247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_7
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 554
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a151155ffd353ee20800000000000000
+      internalID: 3378636366816548122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_8
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 554
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d5ed017df33cda0800000000000000
+      internalID: -5925822491755913933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_9
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 554
+        width: 209
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4beb2949cfee71c0800000000000000
+      internalID: -4503898929528837297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_10
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 554
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719f70438d611a100800000000000000
+      internalID: 117400183130028311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_11
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 554
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59adcea255dfd7d00800000000000000
+      internalID: 972211636816108181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_12
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 286
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54246eeb96137cf80800000000000000
+      internalID: -8086440275676347835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_13
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 286
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9817e21319c32ff60800000000000000
+      internalID: 8066576476867031433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_14
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 286
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccdd1b30d2f251f0800000000000000
+      internalID: -1057515986319713083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_15
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 286
+        width: 209
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac53d0d5b2165d370800000000000000
+      internalID: 8346684323273717194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_16
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 286
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5826edfcbaccf6e0800000000000000
+      internalID: -1802342837792659365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_17
+      rect:
+        serializedVersion: 2
+        x: 1630
+        y: 286
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818073cdd940790e0800000000000000
+      internalID: -2263335211679414248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_18
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 18
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f07485ed635dd580800000000000000
+      internalID: -8800786365344878348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_19
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 18
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446aa7b2ff041f400800000000000000
+      internalID: 356137310229276228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_20
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 18
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82acff857111e3fd0800000000000000
+      internalID: -2360430362720482776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_21
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 18
+        width: 209
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfa640eea320d960800000000000000
+      internalID: 7624633403132260311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_22
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 18
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f5a93115125b7e0800000000000000
+      internalID: -1750456248058618037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sci-Fi Game Icons_23
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 18
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92452386f360bc50800000000000000
+      internalID: 6678948157803807388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 9281617e2ebb9a244b761c3bbd7f9109
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

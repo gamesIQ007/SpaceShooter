@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3587922760705586003}
   - component: {fileID: 8286171676632812614}
   m_Layer: 0
-  m_Name: ProjectileRocket
+  m_Name: ProjectileHomingRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
-  m_Velocity: 10
+  m_Velocity: 8
   m_LifeTime: 60
-  m_Damage: 50
+  m_Damage: 40
   m_ImpactEffectPrefab: {fileID: 598621503010737790, guid: 84036f083af62c94aa4b19445348549b,
     type: 3}
-  m_IsHoming: 0
+  m_IsHoming: 1

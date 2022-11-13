@@ -19,7 +19,7 @@ namespace SpaceShooter
         /// <summary>
         /// —тартовое количество хитпоинтов.
         /// </summary>
-        [SerializeField] private int m_HitPoints;
+        [SerializeField] protected int m_HitPoints;
 
         /// <summary>
         /// “екущее количество хитпоинтов.
@@ -28,10 +28,25 @@ namespace SpaceShooter
         public int HitPoints => m_CurrentHitPoints;
 
         /// <summary>
-        /// »вент, происхд€щий со смертью
+        /// »вент, происход€щий со смертью
         /// </summary>
-        [SerializeField] private UnityEvent m_EventOnDeath;
+        [SerializeField] protected UnityEvent m_EventOnDeath;
         public UnityEvent EventOnDeath => m_EventOnDeath;
+
+        /// <summary>
+        /// ¬рем€ временной неу€звимости
+        /// </summary>
+        private float m_TimeOfTemporaryIndestructible;
+
+        /// <summary>
+        /// »вент при включении неу€звимости
+        /// </summary>
+        [SerializeField] private UnityEvent m_EventOnEnableTemporaryIndestructible;
+
+        /// <summary>
+        /// »вент при выключении неу€звимости
+        /// </summary>
+        [SerializeField] private UnityEvent m_EventOnDisableTemporaryIndestructible;
 
         #endregion
 
@@ -40,6 +55,18 @@ namespace SpaceShooter
         protected virtual void Start()
         {
             m_CurrentHitPoints = m_HitPoints;
+        }
+
+        protected virtual void Update()
+        {
+            if (m_TimeOfTemporaryIndestructible <= 0) return;
+
+            m_TimeOfTemporaryIndestructible -= Time.deltaTime;
+
+            if (m_TimeOfTemporaryIndestructible <= 0)
+            {
+                DisableTemporaryIndestructible();
+            }
         }
 
         #endregion
@@ -61,6 +88,17 @@ namespace SpaceShooter
             }
         }
 
+        /// <summary>
+        /// ¬ключить временную неу€звимость
+        /// </summary>
+        /// <param name="time">¬рем€ временной неу€звимости</param>
+        public void ApplyTemporaryIndestructible(float time)
+        {
+            m_TimeOfTemporaryIndestructible += time;
+            m_Indestructible = true;
+            m_EventOnEnableTemporaryIndestructible?.Invoke();
+        }
+
         #endregion
 
         /// <summary>
@@ -70,6 +108,16 @@ namespace SpaceShooter
         {
             Destroy(gameObject);
             m_EventOnDeath?.Invoke();
+        }
+
+        /// <summary>
+        /// ќтключить временную неу€звимость
+        /// </summary>
+        private void DisableTemporaryIndestructible()
+        {
+            m_Indestructible = false;
+            m_TimeOfTemporaryIndestructible = 0;
+            m_EventOnDisableTemporaryIndestructible?.Invoke();
         }
     }
 }

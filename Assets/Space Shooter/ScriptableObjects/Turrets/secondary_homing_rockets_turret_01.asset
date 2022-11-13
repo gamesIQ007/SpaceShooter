@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1ec1d7a6e349a3408858213c24b35bc, type: 3}
-  m_Name: primary_base_turret_01
+  m_Name: secondary_homing_rockets_turret_01
   m_EditorClassIdentifier: 
-  m_Mode: 0
-  m_ProjectilePrefab: {fileID: 8286171676632812614, guid: ae3e3089357f90d459c63c308293180e,
+  m_Mode: 1
+  m_ProjectilePrefab: {fileID: 8286171676632812614, guid: ffc181aa3c6b514458c9e9d75fab30b0,
     type: 3}
-  m_RateOfFire: 0.2
-  m_EnergyUsage: 2
-  m_AmmoUsage: 0
+  m_RateOfFire: 1.2
+  m_EnergyUsage: 0
+  m_AmmoUsage: 2
   m_LaunchSFX: {fileID: 0}

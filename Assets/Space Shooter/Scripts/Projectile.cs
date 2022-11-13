@@ -38,6 +38,16 @@ namespace SpaceShooter
         /// </summary>
         private Destructible m_Parent;
 
+        /// <summary>
+        /// Признак самонаведения
+        /// </summary>
+        [SerializeField] private bool m_IsHoming;
+
+        /// <summary>
+        /// Цель самонаведения
+        /// </summary>
+        private Destructible m_HomingTarget;
+
         #region Unity Events
 
         private void Update()
@@ -50,7 +60,16 @@ namespace SpaceShooter
             }
 
             float stepLength = m_Velocity * Time.deltaTime;
-            Vector2 step = transform.up * stepLength;
+            Vector2 step;
+            
+            if (m_IsHoming && m_HomingTarget != null)
+            {
+                step = (m_HomingTarget.transform.position - transform.position).normalized * stepLength;
+            }
+            else
+            {
+                step = transform.up * stepLength;
+            }
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, stepLength);
 
@@ -80,15 +99,51 @@ namespace SpaceShooter
         public void SetParentShooter(Destructible parent)
         {
             m_Parent = parent;
+
+            if (m_IsHoming)
+            {
+                m_HomingTarget = FindNearestDestructibleTarget(parent.GetComponent<SpaceShip>());
+            }
         }
 
         #endregion
 
+        /// <summary>
+        /// Действие при конце жизни снаряда
+        /// </summary>
+        /// <param name="col">Коллайдер</param>
+        /// <param name="pos">Позиция</param>
         private void OnProjectileLifeEnd(Collider2D col, Vector2 pos)
         {
-            Instantiate(m_ImpactEffectPrefab, transform);
+            Instantiate(m_ImpactEffectPrefab, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Поиск ближайшего корабля
+        /// </summary>
+        /// <param name="spaceShip">Корабль, запустивший снаряд</param>
+        /// <returns></returns>
+        private Destructible FindNearestDestructibleTarget(SpaceShip spaceShip)
+        {
+            float m_MaxDistance = float.MaxValue;
+            Destructible m_PotencialTarget = null;
+
+            foreach (var destructible in FindObjectsOfType<Destructible>())
+            {
+                if (destructible.GetComponent<SpaceShip>() == spaceShip) continue;
+
+                float dist = Vector2.Distance(spaceShip.transform.position, destructible.transform.position);
+
+                if (dist < m_MaxDistance)
+                {
+                    m_MaxDistance = dist;
+                    m_PotencialTarget = destructible;
+                }
+            }
+
+            return m_PotencialTarget;
         }
     }
 }
