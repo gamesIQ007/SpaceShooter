@@ -24,6 +24,11 @@ namespace SpaceShooter
         [SerializeField] private AIBehaviour m_AIBehaviour;
 
         /// <summary>
+        /// Область патрулирования
+        /// </summary>
+        [SerializeField] private AIPointPatrol m_PatrolPoint;
+
+        /// <summary>
         /// Скорость перемещения
         /// </summary>
         [Range(0.0f, 1.0f)]
@@ -70,6 +75,8 @@ namespace SpaceShooter
         /// </summary>
         private Destructible m_SelectedTarget;
 
+        private Timer m_RandomizeDirectionTimer;
+
         #region Unity Events
 
         private void Start()
@@ -95,7 +102,7 @@ namespace SpaceShooter
         /// </summary>
         private void InitTimers()
         {
-
+            m_RandomizeDirectionTimer = new Timer(m_RandomSelectMovePointTime);
         }
 
         /// <summary>
@@ -103,7 +110,7 @@ namespace SpaceShooter
         /// </summary>
         private void UpdateTimers()
         {
-
+            m_RandomizeDirectionTimer.RemoveTime(Time.deltaTime);
         }
 
         #endregion
@@ -128,6 +135,7 @@ namespace SpaceShooter
             ActionControlShip();
             ActionFindNewAttackTarget();
             ActionFire();
+            ActionEvadeCollision();
         }
 
         /// <summary>
@@ -135,7 +143,47 @@ namespace SpaceShooter
         /// </summary>
         private void ActionFindNewMovePosition()
         {
+            if (m_AIBehaviour == AIBehaviour.Patrol)
+            {
+                if (m_SelectedTarget != null)
+                {
+                    m_MovePosition = m_SelectedTarget.transform.position;
+                }
+                else
+                {
+                    if (m_PatrolPoint != null)
+                    {
+                        bool isInsidePatrolZone = (m_PatrolPoint.transform.position - transform.position).sqrMagnitude < m_PatrolPoint.Radius * m_PatrolPoint.Radius;
 
+                        if (isInsidePatrolZone)
+                        {
+                            if (m_RandomizeDirectionTimer.IsFinished)
+                            {
+                                Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
+
+                                m_MovePosition = newPoint;
+
+                                m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
+                            }
+                        }
+                        else
+                        {
+                            m_MovePosition = m_PatrolPoint.transform.position;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Избегание столкновений
+        /// </summary>
+        private void ActionEvadeCollision()
+        {
+            if (Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength))
+            {
+                m_MovePosition = transform.position + transform.right * 100.0f; // довольно унылый уворот, можно бы и переделать. Но суть ясна
+            }
         }
 
         /// <summary>
@@ -183,6 +231,16 @@ namespace SpaceShooter
         private void ActionFire()
         {
 
+        }
+
+        /// <summary>
+        /// Задать поведение патрулирования
+        /// </summary>
+        /// <param name="point">Область патрулирования</param>
+        private void SetPatrolBehaviour(AIPointPatrol point)
+        {
+            m_AIBehaviour = AIBehaviour.Patrol;
+            m_PatrolPoint = point;
         }
     }
 }
