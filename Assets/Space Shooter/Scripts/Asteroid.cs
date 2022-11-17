@@ -46,8 +46,9 @@ namespace SpaceShooter
             m_EventOnDeath.AddListener(OnAsteroidDestroyed);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             m_EventOnDeath.RemoveListener(OnAsteroidDestroyed);
         }
 

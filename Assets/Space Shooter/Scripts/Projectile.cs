@@ -127,8 +127,8 @@ namespace SpaceShooter
         /// <returns></returns>
         private Destructible FindNearestDestructibleTarget(SpaceShip spaceShip)
         {
-            float m_MaxDistance = float.MaxValue;
-            Destructible m_PotencialTarget = null;
+            float maxDistance = float.MaxValue;
+            Destructible potencialTarget = null;
 
             foreach (var destructible in FindObjectsOfType<Destructible>())
             {
@@ -136,14 +136,14 @@ namespace SpaceShooter
 
                 float dist = Vector2.Distance(spaceShip.transform.position, destructible.transform.position);
 
-                if (dist < m_MaxDistance)
+                if (dist < maxDistance)
                 {
-                    m_MaxDistance = dist;
-                    m_PotencialTarget = destructible;
+                    maxDistance = dist;
+                    potencialTarget = destructible;
                 }
             }
 
-            return m_PotencialTarget;
+            return potencialTarget;
         }
     }
 }

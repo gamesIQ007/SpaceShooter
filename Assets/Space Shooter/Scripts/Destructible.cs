@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -47,6 +48,17 @@ namespace SpaceShooter
         /// »вент при выключении неу€звимости
         /// </summary>
         [SerializeField] private UnityEvent m_EventOnDisableTemporaryIndestructible;
+
+        /// <summary>
+        /// ID нейтральной команды
+        /// </summary>
+        public const int TeamIdNeutral = 0;
+
+        /// <summary>
+        /// ID команды
+        /// </summary>
+        [SerializeField] private int m_TeamId;
+        public int TeamId => m_TeamId;
 
         #endregion
 
@@ -119,5 +131,30 @@ namespace SpaceShooter
             m_TimeOfTemporaryIndestructible = 0;
             m_EventOnDisableTemporaryIndestructible?.Invoke();
         }
+
+        #region Destructible Collection
+
+        /// <summary>
+        /// —писок всех уничтожаемых объектов. HashSet - аналог List, иногда работает быстрее
+        /// </summary>
+        private static HashSet<Destructible> m_AllDestructibles;
+        public static IReadOnlyCollection<Destructible> AllDestructibles => m_AllDestructibles;
+
+        protected virtual void OnEnable()
+        {
+            if (m_AllDestructibles == null)
+            {
+                m_AllDestructibles = new HashSet<Destructible>();
+            }
+
+            m_AllDestructibles.Add(this);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            m_AllDestructibles.Remove(this);
+        }
+
+        #endregion
     }
 }

@@ -75,7 +75,20 @@ namespace SpaceShooter
         /// </summary>
         private Destructible m_SelectedTarget;
 
+        /// <summary>
+        /// Таймер смены направления
+        /// </summary>
         private Timer m_RandomizeDirectionTimer;
+
+        /// <summary>
+        /// Таймер стрельбы
+        /// </summary>
+        private Timer m_FireTimer;
+
+        /// <summary>
+        /// Таймер поиска новой цели
+        /// </summary>
+        private Timer m_FindNewTargetTimer;
 
         #region Unity Events
 
@@ -103,6 +116,8 @@ namespace SpaceShooter
         private void InitTimers()
         {
             m_RandomizeDirectionTimer = new Timer(m_RandomSelectMovePointTime);
+            m_FireTimer = new Timer(m_ShootDelay);
+            m_FindNewTargetTimer = new Timer(m_FindNewTargetTime);
         }
 
         /// <summary>
@@ -111,6 +126,8 @@ namespace SpaceShooter
         private void UpdateTimers()
         {
             m_RandomizeDirectionTimer.RemoveTime(Time.deltaTime);
+            m_FireTimer.RemoveTime(Time.deltaTime);
+            m_FindNewTargetTimer.RemoveTime(Time.deltaTime);
         }
 
         #endregion
@@ -222,7 +239,41 @@ namespace SpaceShooter
         /// </summary>
         private void ActionFindNewAttackTarget()
         {
+            if (m_FindNewTargetTimer.IsFinished)
+            {
+                m_SelectedTarget = FindNearestDestructibleTarget();
 
+                m_FindNewTargetTimer.Start(m_FindNewTargetTime);
+            }
+        }
+
+        /// <summary>
+        /// Найти ближайшую цель
+        /// </summary>
+        /// <returns>Цель</returns>
+        private Destructible FindNearestDestructibleTarget()
+        {
+            float maxDistance = float.MaxValue;
+            Destructible potencialTarget = null;
+
+            foreach (var v in Destructible.AllDestructibles)
+            {
+                if (v.GetComponent<SpaceShip>() == m_SpaceShip) continue;
+
+                if (v.TeamId == Destructible.TeamIdNeutral) continue;
+
+                if (v.TeamId == m_SpaceShip.TeamId) continue;
+
+                float dist = Vector2.Distance(m_SpaceShip.transform.position, v.transform.position);
+
+                if (dist < maxDistance)
+                {
+                    maxDistance = dist;
+                    potencialTarget = v;
+                }
+            }
+
+            return potencialTarget;
         }
 
         /// <summary>
@@ -230,7 +281,15 @@ namespace SpaceShooter
         /// </summary>
         private void ActionFire()
         {
+            if (m_SelectedTarget != null)
+            {
+                if (m_FireTimer.IsFinished)
+                {
+                    m_SpaceShip.Fire(TurretMode.Primary);
 
+                    m_FireTimer.Start(m_ShootDelay);
+                }
+            }
         }
 
         /// <summary>
