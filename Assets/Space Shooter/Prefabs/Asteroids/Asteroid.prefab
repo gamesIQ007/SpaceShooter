@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EventOnDisableTemporaryIndestructible:
     m_PersistentCalls:
       m_Calls: []
+  m_TeamId: 0
+  m_ScoreValue: 10
   m_Size: 3
   m_Speed: 3
   m_Huge: 1

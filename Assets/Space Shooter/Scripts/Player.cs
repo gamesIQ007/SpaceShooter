@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpaceShooter
 {
@@ -46,6 +46,11 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private float m_EffectDuration;
 
+        /// <summary>
+        /// Ивент на изменение количества очков
+        /// </summary>
+        [HideInInspector] public UnityEvent m_EventScoreChanged;
+
         #region Unity Events
 
         private void Start()
@@ -55,6 +60,9 @@ namespace SpaceShooter
 
         #endregion
 
+        /// <summary>
+        /// Действие при смерти корабля
+        /// </summary>
         private void OnShipDeath()
         {
             m_NumLives--;
@@ -68,6 +76,9 @@ namespace SpaceShooter
             }
         }
 
+        /// <summary>
+        /// Респаун
+        /// </summary>
         private void Respawn()
         {
             var newPlayerShip = Instantiate(m_PlayerShipPrefab);
@@ -76,5 +87,40 @@ namespace SpaceShooter
             m_MovementController.SetTargetShip(m_Ship);
             m_Ship.EventOnDeath.AddListener(OnShipDeath);
         }
+
+        #region Score
+
+        /// <summary>
+        /// Очки
+        /// </summary>
+        private int m_Score;
+        public int Score => m_Score;
+
+        /// <summary>
+        /// Количество убийств
+        /// </summary>
+        private int m_NumKills;
+        public int NumKills => m_NumKills;
+
+        /// <summary>
+        /// Увеличение количество очков
+        /// </summary>
+        /// <param name="score">Количество добавляемых очков</param>
+        public void AddScore(int score)
+        {
+            m_Score += score;
+
+            m_EventScoreChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Увеличение счётчика убийств
+        /// </summary>
+        public void AddKill()
+        {
+            m_NumKills++;
+        }
+
+        #endregion
     }
 }

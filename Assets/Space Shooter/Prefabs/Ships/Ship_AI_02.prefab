@@ -5049,6 +5049,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_TeamId: 2
+  m_ScoreValue: 50
   m_Mass: 1
   m_Thrust: 1000
   m_Mobility: 2000

@@ -60,6 +60,12 @@ namespace SpaceShooter
         [SerializeField] private int m_TeamId;
         public int TeamId => m_TeamId;
 
+        /// <summary>
+        /// Количество очков
+        /// </summary>
+        [SerializeField] private int m_ScoreValue;
+        public int ScoreValue => m_ScoreValue;
+
         #endregion
 
         #region Unity Events
