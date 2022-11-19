@@ -71,6 +71,30 @@ namespace SpaceShooter
         private Vector3 m_MovePosition;
 
         /// <summary>
+        /// Типы патрулирования
+        /// </summary>
+        private enum PatrolType
+        {
+            Random,
+            Route
+        }
+
+        /// <summary>
+        /// Тип патрулирования
+        /// </summary>
+        [SerializeField] private PatrolType m_PatrolType;
+
+        /// <summary>
+        /// Точки патрулирования
+        /// </summary>
+        [SerializeField] private Vector3[] m_PatrolRoutePoints;
+
+        /// <summary>
+        /// Текущая точка патрулирования
+        /// </summary>
+        private int m_CurrentPatrolPoint = 0;
+
+        /// <summary>
         /// Цель
         /// </summary>
         private Destructible m_SelectedTarget;
@@ -97,6 +121,36 @@ namespace SpaceShooter
             m_SpaceShip = GetComponent<SpaceShip>();
 
             InitTimers();
+
+            //Задаём начальную точку патрулирования
+            if (m_AIBehaviour == AIBehaviour.Patrol)
+            {
+                if (m_PatrolPoint != null)
+                {
+                    if (m_PatrolType == PatrolType.Random)
+                    {
+                        bool isInsidePatrolZone = (m_PatrolPoint.transform.position - transform.position).sqrMagnitude < m_PatrolPoint.Radius * m_PatrolPoint.Radius;
+
+                        if (isInsidePatrolZone)
+                        {
+                            Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
+
+                            m_MovePosition = newPoint;
+
+                            m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
+                        }
+                        else
+                        {
+                            m_MovePosition = m_PatrolPoint.transform.position;
+                        }
+                    }
+                }
+
+                if (m_PatrolType == PatrolType.Route)
+                {
+                    m_MovePosition = m_PatrolRoutePoints[m_CurrentPatrolPoint];
+                }
+            }
         }
 
         private void Update()
@@ -164,32 +218,71 @@ namespace SpaceShooter
             {
                 if (m_SelectedTarget != null)
                 {
-                    m_MovePosition = m_SelectedTarget.transform.position;
+                    m_MovePosition = MakeLead();
                 }
                 else
                 {
                     if (m_PatrolPoint != null)
                     {
-                        bool isInsidePatrolZone = (m_PatrolPoint.transform.position - transform.position).sqrMagnitude < m_PatrolPoint.Radius * m_PatrolPoint.Radius;
-
-                        if (isInsidePatrolZone)
+                        if (m_PatrolType == PatrolType.Random)
                         {
-                            if (m_RandomizeDirectionTimer.IsFinished)
+                            bool isInsidePatrolZone = (m_PatrolPoint.transform.position - transform.position).sqrMagnitude < m_PatrolPoint.Radius * m_PatrolPoint.Radius;
+
+                            if (isInsidePatrolZone)
                             {
-                                Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
+                                if (m_RandomizeDirectionTimer.IsFinished)
+                                {
+                                    Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
 
-                                m_MovePosition = newPoint;
+                                    m_MovePosition = newPoint;
 
-                                m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
+                                    m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
+                                }
+                            }
+                            else
+                            {
+                                m_MovePosition = m_PatrolPoint.transform.position;
                             }
                         }
-                        else
+                    }
+
+                    if (m_PatrolType == PatrolType.Route)
+                    {
+                        if (m_PatrolRoutePoints.Length < 2)
                         {
-                            m_MovePosition = m_PatrolPoint.transform.position;
+                            m_PatrolType = PatrolType.Random;
+                        }
+
+                        if (m_RandomizeDirectionTimer.IsFinished)
+                        {
+                            m_CurrentPatrolPoint++;
+
+                            if (m_CurrentPatrolPoint == m_PatrolRoutePoints.Length)
+                            {
+                                m_CurrentPatrolPoint = 0;
+                            }
+
+                            m_MovePosition = m_PatrolRoutePoints[m_CurrentPatrolPoint];
+
+                            m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Следование цели с упреждением
+        /// </summary>
+        /// <returns>Расположение цели с упреждением</returns>
+        private Vector3 MakeLead()
+        {
+            SpaceShip ship = m_SelectedTarget.GetComponent<SpaceShip>();
+            Rigidbody2D rigid = ship.GetComponent<Rigidbody2D>();
+
+            float k = (Mathf.Abs(rigid.velocity.x) + Mathf.Abs(rigid.velocity.y)) * ship.ThrustControl;
+
+            return m_SelectedTarget.transform.position + m_SelectedTarget.transform.up * k;
         }
 
         /// <summary>
@@ -199,7 +292,7 @@ namespace SpaceShooter
         {
             if (Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength))
             {
-                m_MovePosition = transform.position + transform.right * 100.0f; // довольно унылый уворот, можно бы и переделать. Но суть ясна
+                m_MovePosition = transform.position + transform.right * 5.0f; // довольно унылый уворот, можно бы и переделать. Но суть ясна
             }
         }
 
@@ -300,6 +393,18 @@ namespace SpaceShooter
         {
             m_AIBehaviour = AIBehaviour.Patrol;
             m_PatrolPoint = point;
+        }
+
+        /// <summary>
+        /// Гизмо для определения длины рейкаста
+        /// </summary>
+        private static readonly Color GizmoColor = new Color(1, 0, 0, 0.3f);
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = GizmoColor;
+            Gizmos.DrawLine(transform.position, transform.position + transform.up * m_EvadeRayLength);
+            Gizmos.DrawLine(transform.position, transform.position + transform.right * 5.0f);
         }
     }
 }

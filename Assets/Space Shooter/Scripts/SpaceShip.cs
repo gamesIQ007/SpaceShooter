@@ -39,6 +39,7 @@ namespace SpaceShooter
         /// ћаксимальна€ линейна€ скорость
         /// </summary>
         [SerializeField] private float m_MaxLinearVelocity;
+        public float MaxLinearVelocity => m_MaxLinearVelocity;
 
         /// <summary>
         /// ћаксимальна€ вращательна€ скорость в градусах/сек.
