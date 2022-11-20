@@ -24,6 +24,16 @@ namespace SpaceShooter
         public int CurrentLevel { get; private set; }
 
         /// <summary>
+        /// Результат последнего уровня
+        /// </summary>
+        public bool LastLevelResult { get; private set; }
+
+        /// <summary>
+        /// Статистика
+        /// </summary>
+        public PlayerStatistics LevelStatistics { get; private set; }
+
+        /// <summary>
         /// Корабль игрока
         /// </summary>
         public static SpaceShip PlayerShip { get; set; }
@@ -37,7 +47,8 @@ namespace SpaceShooter
             CurrentEpisode = episode;
             CurrentLevel = 0;
 
-            // туть сбросить игрповую статистику перед началом
+            LevelStatistics = new PlayerStatistics();
+            LevelStatistics.Reset();
 
             SceneManager.LoadScene(episode.Levels[CurrentLevel]);
         }
@@ -56,10 +67,11 @@ namespace SpaceShooter
         /// <param name="success"></param>
         public void FinishCurrentLevel(bool success)
         {
-            if (success)
-            {
-                AdvanceLevel();
-            }
+            LastLevelResult = success;
+
+            CalculateLevelStatistic();
+
+            ResultPanelController.Instance.ShowResult(LevelStatistics, success);
         }
 
         /// <summary>
@@ -67,6 +79,8 @@ namespace SpaceShooter
         /// </summary>
         public void AdvanceLevel()
         {
+            LevelStatistics.Reset();
+
             CurrentLevel++;
 
             if (CurrentEpisode.Levels.Length <= CurrentLevel)
@@ -77,6 +91,16 @@ namespace SpaceShooter
             {
                 SceneManager.LoadScene(CurrentEpisode.Levels[CurrentLevel]);
             }
+        }
+
+        /// <summary>
+        /// Подсчитываем статистику
+        /// </summary>
+        private void CalculateLevelStatistic()
+        {
+            LevelStatistics.numKills = Player.Instance.NumKills;
+            LevelStatistics.score = Player.Instance.Score;
+            LevelStatistics.time = (int)LevelController.Instance.LevelTime;
         }
     }
 }

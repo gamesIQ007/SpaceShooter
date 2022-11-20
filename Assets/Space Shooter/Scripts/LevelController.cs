@@ -17,7 +17,7 @@ namespace SpaceShooter
     /// <summary>
     /// Контроллер уровня
     /// </summary>
-    public class LevelController : MonoBehaviour
+    public class LevelController : SingletonBase<LevelController>
     {
         /// <summary>
         /// Требуемое время прохождения уровня
