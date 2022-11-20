@@ -5,12 +5,27 @@ namespace SpaceShooter
     /// <summary>
     /// Контроллер главного меню
     /// </summary>
-    public class MainMenuController : MonoBehaviour
+    public class MainMenuController : SingletonBase<MainMenuController>
     {
+        /// <summary>
+        /// Корабль по умолчанию
+        /// </summary>
+        [SerializeField] private SpaceShip m_DefaultSpaceShip;
+
         /// <summary>
         /// Выбор эпизода
         /// </summary>
         [SerializeField] private GameObject m_EpisodeSelection;
+
+        /// <summary>
+        /// Выбор корабля
+        /// </summary>
+        [SerializeField] private GameObject m_ShipSelection;
+
+        private void Start()
+        {
+            LevelSequenceController.PlayerShip = m_DefaultSpaceShip;
+        }
 
         /// <summary>
         /// При нажатии на "Начать новую игру"
@@ -18,6 +33,15 @@ namespace SpaceShooter
         public void OnButtonStartNew()
         {
             m_EpisodeSelection.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// При нажатии на "Выбор корабля"
+        /// </summary>
+        public void OnButtonSelectSpaceShip()
+        {
+            m_ShipSelection.SetActive(true);
             gameObject.SetActive(false);
         }
 

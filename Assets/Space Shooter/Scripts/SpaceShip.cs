@@ -45,6 +45,7 @@ namespace SpaceShooter
         /// Максимальная вращательная скорость в градусах/сек.
         /// </summary>
         [SerializeField] private float m_MaxAngularVelocity;
+        public float MaxAngularVelocity => m_MaxAngularVelocity;
 
         /// <summary>
         /// Сохранённая ссылка на ригид
@@ -80,6 +81,12 @@ namespace SpaceShooter
         /// Текущее количество патронов
         /// </summary>
         private int m_SecondaryAmmo;
+
+        /// <summary>
+        /// Изображение-превью корабля
+        /// </summary>
+        [SerializeField] private Sprite m_PreviewImage;
+        public Sprite PreviewImage => m_PreviewImage;
 
         #region Unity Events
 

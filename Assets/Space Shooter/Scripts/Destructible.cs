@@ -21,6 +21,7 @@ namespace SpaceShooter
         /// Стартовое количество хитпоинтов.
         /// </summary>
         [SerializeField] protected int m_HitPoints;
+        public int MaxHitPoints => m_HitPoints;
 
         /// <summary>
         /// Текущее количество хитпоинтов.

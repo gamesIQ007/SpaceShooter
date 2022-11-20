@@ -24,6 +24,11 @@ namespace SpaceShooter
         public int CurrentLevel { get; private set; }
 
         /// <summary>
+        /// Корабль игрока
+        /// </summary>
+        public static SpaceShip PlayerShip { get; set; }
+
+        /// <summary>
         /// Запуск эпизода
         /// </summary>
         /// <param name="episode">Эпизод</param>
@@ -51,7 +56,10 @@ namespace SpaceShooter
         /// <param name="success"></param>
         public void FinishCurrentLevel(bool success)
         {
-
+            if (success)
+            {
+                AdvanceLevel();
+            }
         }
 
         /// <summary>

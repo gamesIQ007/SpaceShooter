@@ -53,9 +53,21 @@ namespace SpaceShooter
 
         #region Unity Events
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            if (m_Ship != null)
+            {
+                Destroy(m_Ship.gameObject);
+            }
+        }
+
         private void Start()
         {
             m_Ship.EventOnDeath.AddListener(OnShipDeath);
+
+            Respawn();
         }
 
         #endregion
@@ -74,6 +86,11 @@ namespace SpaceShooter
             {
                 Respawn();
             }
+            else
+            {
+                LevelSequenceController.Instance.FinishCurrentLevel(false);
+                // ещё чего-нить прописать, типа выхода в глагне меню
+            }
         }
 
         /// <summary>
@@ -81,11 +98,14 @@ namespace SpaceShooter
         /// </summary>
         private void Respawn()
         {
-            var newPlayerShip = Instantiate(m_PlayerShipPrefab);
-            m_Ship = newPlayerShip.GetComponent<SpaceShip>();
-            m_CameraController.SetTarget(m_Ship.transform);
-            m_MovementController.SetTargetShip(m_Ship);
-            m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            if (LevelSequenceController.PlayerShip != null)
+            {
+                var newPlayerShip = Instantiate(LevelSequenceController.PlayerShip);
+                m_Ship = newPlayerShip.GetComponent<SpaceShip>();
+                m_CameraController.SetTarget(m_Ship.transform);
+                m_MovementController.SetTargetShip(m_Ship);
+                m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            }
         }
 
         #region Score
