@@ -18,7 +18,10 @@ namespace SpaceShooter
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            m_Enter.Invoke();
+            if (collision.transform.root.GetComponent<SpaceShip>() == Player.Instance.ActiveShip)
+            {
+                m_Enter.Invoke();
+            }
         }
 
         #endregion
