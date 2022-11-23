@@ -42,6 +42,7 @@ namespace SpaceShooter
         /// Дестрактибл родителя
         /// </summary>
         private Destructible m_Parent;
+        public Destructible Parent => m_Parent;
 
         /// <summary>
         /// Признак самонаведения

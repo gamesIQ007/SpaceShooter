@@ -101,6 +101,14 @@ namespace SpaceShooter
             if (LevelSequenceController.PlayerShip != null)
             {
                 var newPlayerShip = Instantiate(LevelSequenceController.PlayerShip);
+
+                foreach (var projectiles in FindObjectsOfType<Projectile>())
+                {
+                    if (projectiles.Parent != m_Ship) continue;
+
+                    projectiles.SetParentShooter(newPlayerShip);
+                }
+
                 m_Ship = newPlayerShip.GetComponent<SpaceShip>();
                 m_CameraController.SetTarget(m_Ship.transform);
                 m_MovementController.SetTargetShip(m_Ship);
