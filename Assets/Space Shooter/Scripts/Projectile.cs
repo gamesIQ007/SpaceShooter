@@ -1,8 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace SpaceShooter
 {
-
+    [RequireComponent(typeof(CircleCollider2D))]
     /// <summary>
     /// Снаряд и его поведение
     /// </summary>
@@ -48,7 +53,30 @@ namespace SpaceShooter
         /// </summary>
         private Destructible m_HomingTarget;
 
+        /// <summary>
+        /// Наносит ли урон по области
+        /// </summary>
+        [SerializeField] private bool m_IsAreaDamage;
+
+        /// <summary>
+        /// Радиус урона по области
+        /// </summary>
+        [SerializeField] private float m_Radius;
+
+        /// <summary>
+        /// Список дестрактиблов в зоне поражения
+        /// </summary>
+        List<Destructible> m_DestructiblesInArea;
+
         #region Unity Events
+
+        private void Start()
+        {
+            if (m_IsAreaDamage)
+            {
+                m_DestructiblesInArea = new List<Destructible>();
+            }
+        }
 
         private void Update()
         {
@@ -77,13 +105,16 @@ namespace SpaceShooter
             {
                 Destructible dest = hit.collider.transform.root.GetComponent<Destructible>();
 
-                if (dest != null && dest != m_Parent)
+                if (dest != null && dest != m_Parent && m_IsAreaDamage == false)
                 {
-                    dest.ApplyDamage(m_Damage);
+                    ApplyDamage(dest);
+                }
 
-                    if (m_Parent == Player.Instance.ActiveShip)
+                if (m_IsAreaDamage)
+                {
+                    for (int i = 0; i < m_DestructiblesInArea.Count; i++)
                     {
-                        Player.Instance.AddScore(dest.ScoreValue);
+                        ApplyDamage(m_DestructiblesInArea[i]);
                     }
                 }
 
@@ -91,6 +122,22 @@ namespace SpaceShooter
             }
 
             transform.position += new Vector3(step.x, step.y, 0);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (m_IsAreaDamage)
+            {
+                m_DestructiblesInArea.Add(other.transform.root.GetComponent<Destructible>());
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (m_IsAreaDamage)
+            {
+                m_DestructiblesInArea.Remove(other.transform.root.GetComponent<Destructible>());
+            }
         }
 
         #endregion
@@ -112,6 +159,21 @@ namespace SpaceShooter
         }
 
         #endregion
+
+        private void ApplyDamage(Destructible destructible)
+        {
+            destructible.ApplyDamage(m_Damage);
+
+            if (m_Parent == Player.Instance.ActiveShip)
+            {
+                Player.Instance.AddScore(destructible.ScoreValue);
+
+                if (destructible.HitPoints < 0)
+                {
+                    Player.Instance.AddKill();
+                }
+            }
+        }
 
         /// <summary>
         /// Действие при конце жизни снаряда
@@ -150,5 +212,23 @@ namespace SpaceShooter
 
             return potencialTarget;
         }
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Цвет гизмо
+        /// </summary>
+        private static Color GizmoColor = new Color(0, 1, 0, 0.3f);
+
+        private void OnDrawGizmosSelected()
+        {
+            Handles.color = GizmoColor;
+            Handles.DrawSolidDisc(transform.position, transform.forward, m_Radius);
+        }
+
+        private void OnValidate()
+        {
+            GetComponent<CircleCollider2D>().radius = m_Radius;
+        }
+#endif
     }
 }

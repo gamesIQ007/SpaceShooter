@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6713304480185974403}
   - component: {fileID: 598621503010737790}
-  - component: {fileID: 3753383889073564012}
-  - component: {fileID: 5960259349409684668}
   m_Layer: 0
   m_Name: ExplosionEffect
   m_TagString: Untagged
@@ -47,36 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LifeTime: 2
---- !u!114 &3753383889073564012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062489572692102624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8f939c0db826942a9767d7964a88dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Damage: 500
-  m_Radius: 1.57
---- !u!58 &5960259349409684668
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062489572692102624}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.57
 --- !u!1 &6627805439686360736
 GameObject:
   m_ObjectHideFlags: 0

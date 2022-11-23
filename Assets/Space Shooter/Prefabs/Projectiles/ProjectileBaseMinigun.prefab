@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3587922760705586003}
   - component: {fileID: 8286171676632812614}
+  - component: {fileID: 7674651623498729362}
   m_Layer: 0
   m_Name: ProjectileBaseMinigun
   m_TagString: Untagged
@@ -197,3 +198,22 @@ MonoBehaviour:
   m_Damage: 5
   m_ImpactEffectPrefab: {fileID: 2211537760785672664, guid: d43e455b9b771b04aa3c0aec713642b5,
     type: 3}
+  m_IsHoming: 0
+  m_IsAreaDamage: 0
+  m_Radius: 0
+--- !u!58 &7674651623498729362
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8744106072993045681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.0001
