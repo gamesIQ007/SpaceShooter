@@ -34,9 +34,23 @@ namespace SpaceShooter
         public PlayerStatistics LevelStatistics { get; private set; }
 
         /// <summary>
+        /// Общая статистика
+        /// </summary>
+        public TotalStatistics TotalStatistics { get; private set; }
+
+        /// <summary>
         /// Корабль игрока
         /// </summary>
         public static SpaceShip PlayerShip { get; set; }
+
+        private void Start()
+        {
+            if (TotalStatistics == null)
+            {
+                TotalStatistics = new TotalStatistics();
+                TotalStatistics.Reset();
+            }
+        }
 
         /// <summary>
         /// Запуск эпизода
@@ -101,6 +115,10 @@ namespace SpaceShooter
             LevelStatistics.numKills = Player.Instance.NumKills;
             LevelStatistics.score = Player.Instance.Score;
             LevelStatistics.time = (int)LevelController.Instance.LevelTime;
+
+            TotalStatistics.totalNumKills += LevelStatistics.numKills;
+            TotalStatistics.totalScore += LevelStatistics.score;
+            TotalStatistics.totalTime += LevelStatistics.time;
         }
     }
 }

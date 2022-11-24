@@ -22,6 +22,11 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private GameObject m_ShipSelection;
 
+        /// <summary>
+        /// Общая статистика
+        /// </summary>
+        [SerializeField] private GameObject m_TotalStatistics;
+
         private void Start()
         {
             LevelSequenceController.PlayerShip = m_DefaultSpaceShip;
@@ -42,6 +47,15 @@ namespace SpaceShooter
         public void OnButtonSelectSpaceShip()
         {
             m_ShipSelection.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// При нажатии на "Общая статистика"
+        /// </summary>
+        public void OnButtonTotalStatistics()
+        {
+            m_TotalStatistics.SetActive(true);
             gameObject.SetActive(false);
         }
 
