@@ -22,11 +22,17 @@ namespace SpaceShooter
         /// </summary>
         public int time;
 
+        /// <summary>
+        /// Бонус
+        /// </summary>
+        public int bonus;
+
         public void Reset()
         {
             numKills = 0;
             score = 0;
             time = 0;
+            bonus = 0;
         }
     }
 }

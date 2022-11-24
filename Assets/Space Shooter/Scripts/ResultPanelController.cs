@@ -24,6 +24,11 @@ namespace SpaceShooter
         [SerializeField] private Text m_Time;
 
         /// <summary>
+        /// Бонусные очки
+        /// </summary>
+        [SerializeField] private Text m_Bonus;
+
+        /// <summary>
         /// Текст результата
         /// </summary>
         [SerializeField] private Text m_Result;
@@ -55,6 +60,7 @@ namespace SpaceShooter
             m_NumKills.text = "Kills: " + levelResult.numKills.ToString();
             m_Score.text = "Score: " + levelResult.score.ToString();
             m_Time.text = "Time: " + levelResult.time.ToString();
+            m_Bonus.text = "Bonus: " + levelResult.bonus.ToString();
 
             m_Success = success;
 

@@ -14,6 +14,16 @@ namespace SpaceShooter
         public static string MainMenuSceneNickname = "main_menu";
 
         /// <summary>
+        /// Время прохождения, за которое дадут бонусные очки
+        /// </summary>
+        [SerializeField] private int m_MaxTimeForBonus;
+
+        /// <summary>
+        /// Множитель очков
+        /// </summary>
+        [SerializeField] private float m_BonusMultiplier;
+
+        /// <summary>
         /// Текущий эпизод
         /// </summary>
         public Episode CurrentEpisode { get; private set; }
@@ -115,9 +125,13 @@ namespace SpaceShooter
             LevelStatistics.numKills = Player.Instance.NumKills;
             LevelStatistics.score = Player.Instance.Score;
             LevelStatistics.time = (int)LevelController.Instance.LevelTime;
+            if (m_MaxTimeForBonus > LevelStatistics.time)
+            {
+                LevelStatistics.bonus = (int)(LevelStatistics.score * m_BonusMultiplier);
+            }
 
             TotalStatistics.totalNumKills += LevelStatistics.numKills;
-            TotalStatistics.totalScore += LevelStatistics.score;
+            TotalStatistics.totalScore += LevelStatistics.score + LevelStatistics.bonus;
             TotalStatistics.totalTime += LevelStatistics.time;
         }
     }
