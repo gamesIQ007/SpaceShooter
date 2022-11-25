@@ -89,7 +89,6 @@ namespace SpaceShooter
             else
             {
                 LevelSequenceController.Instance.FinishCurrentLevel(false);
-                // ещё чего-нить прописать, типа выхода в глагне меню
             }
         }
 
