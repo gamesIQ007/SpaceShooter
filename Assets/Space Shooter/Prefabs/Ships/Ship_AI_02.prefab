@@ -5048,8 +5048,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_TeamId: 2
-  m_ScoreValue: 50
+  m_TeamId: 3
+  m_ScoreValue: 10
   m_Mass: 1
   m_Thrust: 1000
   m_Mobility: 2000
@@ -5063,6 +5063,7 @@ MonoBehaviour:
   m_MaxEnergy: 100
   m_MaxAmmo: 10
   m_EnergyRegenPerSecond: 1
+  m_PreviewImage: {fileID: 0}
 --- !u!114 &8793792823659922933
 MonoBehaviour:
   m_ObjectHideFlags: 0

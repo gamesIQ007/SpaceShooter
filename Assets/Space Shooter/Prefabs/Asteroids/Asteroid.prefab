@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Nickname: 
   m_Indestructible: 0
-  m_HitPoints: 100
+  m_HitPoints: 50
   m_EventOnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_TeamId: 0
-  m_ScoreValue: 10
+  m_ScoreValue: 2
   m_Size: 3
   m_Speed: 3
   m_Huge: 1

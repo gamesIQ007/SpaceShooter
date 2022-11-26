@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Space Shooter/Scenes/scene_area.unity
     guid: b0be9b56685329148a3a5a93de45ff0f
+  - enabled: 1
+    path: Assets/Space Shooter/Scenes/s1l1.unity
+    guid: 713172007f9299042865e876d7f3bef7
+  - enabled: 1
+    path: Assets/Space Shooter/Scenes/s1l2.unity
+    guid: 16c39b4a42420fb41b48dba0a2e9adac
   m_configObjects: {}

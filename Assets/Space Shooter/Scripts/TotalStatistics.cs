@@ -5,7 +5,7 @@ namespace SpaceShooter
     /// <summary>
     /// Общая статистика игр
     /// </summary>
-    public class TotalStatistics : MonoBehaviour
+    public class TotalStatistics
     {
         /// <summary>
         /// Количество убийств

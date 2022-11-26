@@ -531,7 +531,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_TeamId: 0
+  m_TeamId: 1
   m_ScoreValue: 0
   m_Mass: 1
   m_Thrust: 1000
