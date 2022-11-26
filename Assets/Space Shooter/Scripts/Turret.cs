@@ -70,7 +70,8 @@ namespace SpaceShooter
 
             m_RefireTimer = m_TurretProperties.RateOfFire;
 
-            // издать звуки
+            m_Ship.audio.clip = m_TurretProperties.LaunchSFX;
+            m_Ship.audio.Play();
         }
 
         /// <summary>

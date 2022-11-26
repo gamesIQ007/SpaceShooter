@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: episode_c
   m_EditorClassIdentifier: 
   m_EpisodeName: Episode C
-  m_Levels: []
+  m_Levels:
+  - s3l1
   m_PreviewImage: {fileID: 21300000, guid: 2c8a3064830917f4a857f7a0354fd3ce, type: 3}

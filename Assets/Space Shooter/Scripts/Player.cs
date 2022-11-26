@@ -35,17 +35,6 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private MovementController m_MovementController;
 
-        [Header("DeathEffect")]
-        /// <summary>
-        /// Префаб эффекта посмертного префаба
-        /// </summary>
-        [SerializeField] private GameObject m_EffectPrefab;
-
-        /// <summary>
-        /// Время жизни эффекта
-        /// </summary>
-        [SerializeField] private float m_EffectDuration;
-
         /// <summary>
         /// Ивент на изменение количества очков
         /// </summary>
@@ -78,9 +67,6 @@ namespace SpaceShooter
         private void OnShipDeath()
         {
             m_NumLives--;
-
-            GameObject effect = Instantiate(m_EffectPrefab, m_Ship.transform.position, Quaternion.identity);
-            Destroy(effect, m_EffectDuration);
 
             if (m_NumLives > 0)
             {

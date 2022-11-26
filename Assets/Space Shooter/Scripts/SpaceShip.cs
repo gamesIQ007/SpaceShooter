@@ -3,6 +3,7 @@ using UnityEngine;
 namespace SpaceShooter
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(AudioSource))]
 
     /// <summary>
     /// Класс космического корабля
@@ -88,6 +89,17 @@ namespace SpaceShooter
         [SerializeField] private Sprite m_PreviewImage;
         public Sprite PreviewImage => m_PreviewImage;
 
+        /// <summary>
+        /// Звуки корабля (стрельбы)
+        /// </summary>
+        [HideInInspector] public new AudioSource audio;
+
+        [Header("DeathEffect")]
+        /// <summary>
+        /// Префаб эффекта посмертного префаба
+        /// </summary>
+        [SerializeField] private GameObject m_EffectPrefab;
+
         #region Unity Events
 
         protected override void Start()
@@ -100,6 +112,8 @@ namespace SpaceShooter
             InitArmament();
 
             m_ThrustModifier = 1;
+
+            audio = GetComponent<AudioSource>();
         }
 
         protected override void Update()
@@ -274,6 +288,13 @@ namespace SpaceShooter
         {
             m_ThrustModifier = 1;
             m_ThrustModifierTimer = 0;
+        }
+
+        protected override void OnDeath()
+        {
+            base.OnDeath();
+
+            GameObject effect = Instantiate(m_EffectPrefab, transform.position, Quaternion.identity);
         }
     }
 }

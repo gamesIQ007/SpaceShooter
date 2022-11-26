@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EpisodeName: Episode B
   m_Levels:
-  - scene_area
+  - s2l1
+  - s2l2
   m_PreviewImage: {fileID: 21300000, guid: b66ba4e8189492c4a9e87f38bbdb8ea9, type: 3}
